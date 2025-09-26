@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Health Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head><body>
+    <div class="container">
+        <h1 id="welcomeMessage">Welcome, User!</h1>
+        <a href="index.html">Logout</a>
+
+        <div class="card">
+            <h2>My Health ID QR Code</h2>
+            <p>Show this to your doctor to share your records securely.</p>
+            <div id="qrcode"></div>
+        </div>
+
+        <div class="card">
+            <h2>My Profile Details</h2>
+            <label>Full Name:</label>
+            <input type="text" id="fullName" placeholder="Your full name">
+            
+            <label>Age:</label>
+            <input type="number" id="age" placeholder="Your age">
+
+            <label>Blood Group:</label>
+            <input type="text" id="bloodGroup" placeholder="e.g., O+">
+            
+            <label>Known Allergies:</label>
+            <textarea id="allergies" placeholder="e.g., Penicillin, Peanuts"></textarea>
+
+            <label>Chronic Conditions:</label>
+            <textarea id="conditions" placeholder="e.g., Diabetes, High BP"></textarea>
+            
+            <button id="saveProfileBtn">Save My Profile</button>
+        </div>
+
+        <div class="card">
+            <h2>My Medical Records</h2>
+            <div id="recordsList">
+                <p>No records found. They will appear here after a doctor's visit.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Add QR Code generation library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

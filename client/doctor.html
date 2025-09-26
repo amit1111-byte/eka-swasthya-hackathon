@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Doctor's Portal</h1>
+        <p>Scan the patient's QR code to securely access their records.</p>
+        
+        <!-- This div is where the camera view will appear -->
+        <div id="qr-reader" style="width: 300px; margin: 0 auto;"></div>
+        
+        <input type="text" id="patientIdInput" placeholder="Or manually enter Patient's Health ID">
+        <button id="fetchBtn">Fetch Manually</button>
+
+        <div id="patientDataCard" class="card" style="display: none;">
+            <h2>Patient Medical Profile</h2>
+            <p><strong>Name:</strong> <span id="pName"></span></p>
+            <p><strong>Age:</strong> <span id="pAge"></span></p>
+            <p><strong>Blood Group:</strong> <span id="pBloodGroup"></span></p>
+            <p><strong>Allergies:</strong> <span id="pAllergies"></span></p>
+            <p><strong>Chronic Conditions:</strong> <span id="pConditions"></span></p>
+            
+            <hr>
+            <h3>Add New Medical Note</h3>
+            <textarea id="newRecordInput" placeholder="e.g., Prescribed Paracetamol 500mg..."></textarea>
+            <button id="addRecordBtn">Add Note to Patient's Record</button>
+        </div>
+    </div>
+    <!-- Add QR Code scanning library -->
+    <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
