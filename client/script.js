@@ -1,3 +1,21 @@
+// --- LOGIC FOR DOCTOR LOGIN PAGE (doctor_login.html) ---
+if (document.getElementById('doctorLoginBtn')) {
+    document.getElementById('doctorLoginBtn').addEventListener('click', () => {
+        const doctorId = document.getElementById('doctorIdInput').value;
+        const doctorName = document.getElementById('doctorNameInput').value;
+
+        if (!doctorId || !doctorName) {
+            return alert('Please enter both Doctor ID and Name.');
+        }
+
+        // Save the doctor's info in the browser's session storage
+        sessionStorage.setItem('currentDoctorId', doctorId);
+        sessionStorage.setItem('currentDoctorName', doctorName);
+
+        // Redirect to the main doctor portal
+        window.location.href = 'doctor.html';
+    });
+}
 // client/script.js
 document.addEventListener('DOMContentLoaded', () => {
     // This is the URL where our backend server is running.
@@ -98,6 +116,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- LOGIC FOR DOCTOR PAGE (doctor.html) ---
+    // Check if a doctor is logged in. If not, redirect to the login page.
+    const currentDoctorName = sessionStorage.getItem('currentDoctorName');
+    const currentDoctorId = sessionStorage.getItem('currentDoctorId');
+
+    if (!currentDoctorId) {
+    window.location.href = 'doctor_login.html';
+    } else {
+     // Display the welcome message for the logged-in doctor
+    document.getElementById('doctorWelcome').textContent = `Welcome, ${currentDoctorName} (ID: ${currentDoctorId})`;
+    }
     if (document.getElementById('fetchBtn')) {
         const patientIdInput = document.getElementById('patientIdInput');
         
@@ -147,7 +175,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 await fetch(`${API_URL}/records/${patientId}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ note: newRecordNote, doctor: 'Dr. Amit' })
+                    body: JSON.stringify({ 
+                    note: newRecordNote, 
+                    doctorName: currentDoctorName, 
+                    doctorId: currentDoctorId 
+                    })
                 });
                 alert('Record added successfully!');
                 document.getElementById('newRecordInput').value = '';

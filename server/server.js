@@ -24,7 +24,8 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 // --- Database Schema (The structure of our data) ---
 const recordSchema = new mongoose.Schema({
     note: String,
-    doctor: String,
+    doctorName: String, // Changed from 'doctor'
+    doctorId: String,   // Added this field
     date: { type: Date, default: Date.now }
 });
 
@@ -91,8 +92,8 @@ app.put('/api/user/:healthId', async (req, res) => {
 // 4. Add a new medical record
 app.post('/api/records/:healthId', async (req, res) => {
     try {
-        const { note, doctor } = req.body;
-        const newRecord = { note, doctor };
+        const { note, doctorName, doctorId } = req.body;
+        const newRecord = { note, doctorName, doctorId };
         
         const user = await User.findOneAndUpdate(
             { healthId: req.params.healthId },
