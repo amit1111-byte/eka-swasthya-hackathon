@@ -15,7 +15,7 @@ app.use(express.json());
 // 2. Click "Connect" on your cluster, then "Connect your application".
 // 3. Copy the connection string it gives you.
 // 4. Paste it here, replacing "<password>" with your database user's password.
-const mongoURI = 'mongodb+srv://db_user:Server_94958@cluster0.k8ugowf.mongodb.net/eka_swasthya?retryWrites=true&w=majority&appName=Cluster0';
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/eka_swasthya';
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('SUCCESS: MongoDB connected successfully!'))
