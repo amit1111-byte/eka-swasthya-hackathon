@@ -1,7 +1,7 @@
 // client/script.js
 document.addEventListener('DOMContentLoaded', () => {
     // This is the URL where our backend server is running.
-    const API_URL = 'http://localhost:3001/api';
+    const API_URL = 'https://eka-swasthya-server.onrender.com/api';
 
     // --- LOGIC FOR LOGIN PAGE (index.html) ---
     if (document.getElementById('loginBtn')) {
