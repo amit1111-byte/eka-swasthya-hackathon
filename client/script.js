@@ -1,6 +1,7 @@
 // --- LOGIC FOR DOCTOR LOGIN PAGE (doctor_login.html) ---
 if (document.getElementById('doctorLoginBtn')) {
-    document.getElementById('doctorLoginBtn').addEventListener('click', () => {
+    document.getElementById('doctorLoginBtn').addEventListener('click', (e) => {
+        e.preventdefault();
         const doctorId = document.getElementById('doctorIdInput').value;
         const doctorName = document.getElementById('doctorNameInput').value;
 
